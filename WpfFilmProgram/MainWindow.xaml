@@ -1,0 +1,37 @@
+﻿<Window x:Class="WpfFilmProgram.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfFilmProgram"
+        mc:Ignorable="d"
+        Title="LAX A/S Film database" Height="600" Width="800" Background="Aqua">
+        <DockPanel Margin="0,31,0,167">       
+        <DataGrid x:Name="MyDataGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" Margin="0,54,0,51" SelectionChanged="MyDataGrid_SelectionChanged" Width="717">
+           <DataGrid.Columns>
+                <DataGridTextColumn Header="Film ID" Binding="{Binding Film_ID}"/>
+                <DataGridTextColumn Header="Film Titel" Binding="{Binding Titel}"/>
+                <DataGridTextColumn Header="Instruktør" Binding="{Binding Instruktør}"/>
+                <DataGridTextColumn Header="Genre" Binding="{Binding Genre}"/>
+                <DataGridTextColumn Header="Release Dato" Binding="{Binding Årstal, StringFormat=yyyy}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Rediger|Slet|Detailje"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="RedigerBtn" Content="    R     " Click="RedigerBtn_Click"/>
+                                <Button x:Name="SletBtn" Content="    S      " Click="SletBtn_Click"/>
+                                <Button x:Name="DetailjeBtn" Content="    D   " Click="DetailjeBtn_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content=" Opret " Height="35" VerticalAlignment="Top" Width="55" Click="Button_Click"/>
+    </DockPanel>
+</Window>
